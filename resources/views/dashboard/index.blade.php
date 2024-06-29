@@ -1,6 +1,9 @@
 @extends('.master')
 
 @section('title', 'Dashboard')
+ <!-- Conteúdo do seu dashboard aqui -->
+
+ <div class="container-button">
 
 @section('content')
 

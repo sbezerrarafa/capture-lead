@@ -61,6 +61,25 @@
                         <span>Configurações</span>
                     </a>
                 </li>
+                <li>
+                    <div class="dropdown">
+                        <button class="btn-padrao dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ route('perfil.edit') }}">Editar Perfil</a>
+                            
+                            @if(Auth::user()->isAdmin())
+                                <a class="dropdown-item" href="{{ route('admin.manage-users') }}">Gerenciar Usuários</a>
+                            @endif
+                            
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Sair</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
             </ul>
 
             <ul class="list-unstyled CTAs">
