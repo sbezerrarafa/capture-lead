@@ -9,7 +9,7 @@ use App\Http\Controllers\ConfiguracoesUserController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
-// Redireciona a rota raiz (/) para o login se não autenticado, senão para o dashboard
+
 Route::get('/', function () {
     if (auth()->check()) {
         return redirect()->route('dashboard');
@@ -35,11 +35,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/admin/manage-users', [AdminController::class, 'manageUsers'])->name('admin.manage-users');
-        Route::post('/admin/store-user', [AdminController::class, 'storeUser'])->name('admin.store-user');
+        Route::post('/admin/store-user', [AdminController::class, 'store'])->name('admin.store-user');
         Route::get('/admin/edit-user/{user}', [AdminController::class, 'editUser'])->name('admin.edit-user');
         Route::patch('/admin/update-user/{user}', [AdminController::class, 'updateUser'])->name('admin.update-user');
+        // Route::get('/perfil/store', [PerfilController::class, 'store'])->name('perfil.store');
+        Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser'])->name('admin.delete-user');
+
     });
     
 });
-Route::get('/perfil/store', [PerfilController::class, 'store'])->name('perfil.store');
 require __DIR__.'/auth.php';
+
+
+//Route::get('/perfil', [PerfilController::class, 'store'])->name('perfil.store');

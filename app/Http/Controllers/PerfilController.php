@@ -12,18 +12,6 @@ use Illuminate\View\View;
 
 class PerfilController extends Controller
 {
-    public function store()
-    {
-        $user = new User();
-        $user->name = 'user';
-        $user->email = 'user@user.com';
-        $user->role = 'user';
-        $user->password = bcrypt('a123123');
-        $user->save();
-
-        return response()->json(['message' => 'Usuário criado com sucesso']);
-    }
-
     /**
      * Display the user's perfil form.
      */
@@ -68,36 +56,36 @@ class PerfilController extends Controller
     /**
      * List all users (admin only).
      */
-    public function index(): View
-    {
-        $this->authorize('viewAny', User::class);
+    // public function index(): View
+    // {
+    //     $this->authorize('viewAny', User::class);
 
-        $users = User::all();
-        return view('perfil.index', ['users' => $users]);
-    }
+    //     $users = User::all();
+    //     return view('perfil.index', ['users' => $users]);
+    // }
 
     /**
      * Delete the user's account.
      */
-    public function destroy(Request $request, User $user = null): RedirectResponse
-    {
-        if ($user) {
-            $this->authorize('delete', $user);
-        } else {
-            $user = $request->user();
-        }
+    // public function destroy(Request $request, User $user = null): RedirectResponse
+    // {
+    //     if ($user) {
+    //         $this->authorize('delete', $user);
+    //     } else {
+    //         $user = $request->user();
+    //     }
 
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current-password'],
-        ]);
+    //     $request->validateWithBag('userDeletion', [
+    //         'password' => ['required', 'current-password'],
+    //     ]);
 
-        Auth::logout();
+    //     Auth::logout();
 
-        $user->delete();
+    //     $user->delete();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+    //     $request->session()->invalidate();
+    //     $request->session()->regenerateToken();
 
-        return Redirect::to('/');
-    }
+    //     return Redirect::to('/');
+    // }
 }
