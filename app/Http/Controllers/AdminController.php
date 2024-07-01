@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
@@ -58,4 +59,36 @@ class AdminController extends Controller
 
         return redirect()->route('admin.manage-users')->with('status', 'Usuário atualizado com sucesso!');
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role = $request->role;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        //return response()->json(['message' => 'Usuário criado com sucesso']);
+        return Redirect::route('admin.manage-users')->with('status', 'Usuário criado com sucesso!');
+    }
+
+    public function deleteUser(User $user)
+    {
+        if (auth()->user()->id == $user->id) {
+            return redirect()->route('admin.manage-users')->with('status', 'Você não pode deletar seu próprio usuário.');
+        }
+
+        $user->delete();
+    
+        return redirect()->route('admin.manage-users')->with('status', 'Usuário deletado com sucesso!');
+    }
+    
+
 }
