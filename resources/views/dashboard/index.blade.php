@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
  <!-- Conteúdo do seu dashboard aqui -->
 
-
+{{-- opa isto é um comentario --}}
 
 @section('content')
 
