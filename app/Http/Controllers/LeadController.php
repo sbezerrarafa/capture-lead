@@ -54,13 +54,13 @@ class LeadController extends Controller
             Log::info('Dados validados:', $validatedData);
         
             $listaNome = $validatedData['lista_nome'];
-            $hashLista = (string) Str::uuid();  // Gera um UUID para o grupo
+            $hashLista = (string) Str::uuid();
             $userId = auth()->id();
 
             foreach ($leads as $place) {
                 $leadData = [
                     'user_id' => $userId,
-                    'hash_lista' => $hashLista,  // Usa o mesmo hash para o grupo
+                    'hash_lista' => $hashLista,
                     'nome' => $place->name,
                     'telefone' => $place->formatted_phone_number,
                     'endereco' => $place->formatted_address,
@@ -92,18 +92,14 @@ class LeadController extends Controller
 
     public function update(Request $request, $hash_lista)
     {
-        // Validar o nome da lista
         $validatedData = $request->validate([
             'lista_nome' => 'required|string|max:255',
         ]);
 
-        // Atualizar o nome da lista para todos os leads com o mesmo hash_lista
         Lead::where('hash_lista', $hash_lista)->update(['lista_nome' => $validatedData['lista_nome']]);
 
-        // Obter os IDs dos leads que devem ser mantidos
         $leadsToKeep = $request->input('leads', []);
 
-        // Deletar leads que não estão na lista de IDs a serem mantidos
         Lead::where('hash_lista', $hash_lista)->whereNotIn('id', $leadsToKeep)->delete();
 
         return redirect()->route('leads.index')->with('success', 'Lista de leads atualizada com sucesso!');
