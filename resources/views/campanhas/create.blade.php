@@ -50,32 +50,24 @@
           <tr>
               <th scope="col">Nome da Campanha</th>
               <th scope="col">Data de Criação</th>
-              <th scope="col">Lista de Clientes</th>
               <th scope="col">Canal</th>
               <th scope="col">Status</th>
               <th scope="col">Ações</th>
           </tr>
       </thead>
       <tbody>
-        @foreach($campanhas as $campanha)
-          <tr>
-              <td>{{ $campanha->nome }}</td>
-              <td>{{ $campanha->created_at->format('d/m/Y') }}</td>
-              <td> 
-                @foreach($leads as $lead)
-                      @if ($lead['hash_lista'] === $campanha->lead_id)
-                          {{ $lead->lista_nome }}
-                      @endif
-                  @endforeach
-              </td>
-              <td>{{ $campanha->canal }}</td>
-              <td>{{ $campanha->status }}</td>
-                  <td>
-                      <button class="btn btn-sm btn-info">Reenviar</button>
-                      <button class="btn btn-sm btn-danger">Excluir</button>
-                  </td>
-          </tr>
-        @endforeach
+          @foreach($campanhas as $campanha)
+            <tr>
+                <td>{{ $campanha->nome }}</td>
+                <td>{{ $campanha->created_at->format('d/m/Y') }}</td>
+                <td>{{ $campanha->canal }}</td>
+                <td>{{ $campanha->status }}</td>
+                <td>
+                    <button class="btn btn-sm btn-info">Reenviar</button>
+                    <button class="btn btn-sm btn-danger">Excluir</button>
+                </td>
+            </tr>
+          @endforeach
       </tbody>
   </table>
   </div>

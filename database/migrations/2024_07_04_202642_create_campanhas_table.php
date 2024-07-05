@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateCampanhasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('campanhas');
         Schema::create('campanhas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('lead_id')->constrained()->onDelete('cascade');
+            $table->string('nome');
+            $table->string('canal');
+            $table->string('status');
+            $table->text('conteudo')->nullable();
             $table->timestamps();
-        });
+            $table->softDeletes();
+        }); 
     }
 
     /**
@@ -28,4 +36,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('campanhas');
     }
-};
+}

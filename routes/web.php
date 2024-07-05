@@ -8,7 +8,8 @@ use App\Http\Controllers\SuporteController;
 use App\Http\Controllers\ConfiguracoesUserController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\GooglePlacesController;
+use App\Http\Controllers\LeadController;
 
 Route::get('/', function () {
     if (auth()->check()) {
@@ -17,7 +18,6 @@ Route::get('/', function () {
     return redirect()->route('login');
 })->name('home');
 
-// Rota de login
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
@@ -25,11 +25,23 @@ Route::get('/login', function () {
 // Rotas protegidas por middleware de autenticação e verificação
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/campanhas', [CampanhasController::class, 'index'])->name('campanhas');
+    //Route::get('/campanhas', [CampanhasController::class, 'index'])->name('campanhas');
     Route::get('/resultados', [ResultadosController::class, 'index'])->name('resultados');
     Route::get('/suporte', [SuporteController::class, 'index'])->name('suporte');
     Route::get('/configuracoes', [ConfiguracoesUserController::class, 'index'])->name('configuracoes');
+
+    Route::get('/leads/busca', [GooglePlacesController::class, 'search'])->name('search.places');
+    //Route::post('/create-list', [LeadController::class, 'store'])->name('create.list')->middleware('auth');
+    Route::get('/leads/lista', [LeadController::class, 'index'])->name('leads.index')->middleware('auth');
+    Route::post('/leads', [LeadController::class, 'store'])->name('leads.store')->middleware('auth');
+    Route::resource('leads', LeadController::class);
+
+
+    Route::resource('campanhas', CampanhasController::class);
     
+
+
+
     Route::get('/perfil', [PerfilController::class, 'edit'])->name('perfil.edit');
     Route::patch('/perfil', [PerfilController::class, 'update'])->name('perfil.update');
 

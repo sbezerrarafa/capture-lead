@@ -30,9 +30,19 @@
                         </li>
                     </ul> --}}
                 </li>
-              
+                <li class="nav-item dropdown">
+                    <a id="leadsDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-list"></i>
+                        <span>Leads</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="leadsDropdown">
+                        <a class="dropdown-item" href="{{ route('search.places') }}">Buscar Leads</a>
+                        <a class="dropdown-item" href="{{ route('leads.index') }}">Lista de Leads</a>
+                    </div>
+                </li>
+                
                 <li>
-                    <a href="{{ route('campanhas') }}">
+                    <a href="{{ route('campanhas.index') }}">
                         <i class="fa-solid fa-bullhorn"></i>
                       <span>Campanhas</span> 
                     </a>
@@ -112,7 +122,7 @@
                                 <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('campanhas') }}">Campanhas</a>
+                                <a class="nav-link" href="{{ route('campanhas.index') }}">Campanhas</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('suporte') }}">FAQ</a>
