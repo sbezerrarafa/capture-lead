@@ -3,79 +3,83 @@
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>Leads Capture</h3>
-                <strong>LS</strong>
+            <div class="sidebar-superior">
+                <div class="sidebar-header">
+                    <h3>Leads Capture</h3>
+                    <strong>LS</strong>
+                </div>
+                <ul class="list-unstyled components">
+                    <li class="active">
+                        {{-- <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" >
+                            <i class="fas fa-home"></i>
+                            Home
+                        </a> --}}
+                        <a href="{{ route('dashboard') }}">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                        {{-- <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li>
+                                <a href="#">Lista</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 3</a>
+                            </li>
+                        </ul> --}}
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="leadsDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa-solid fa-list"></i>
+                            <span>Leads</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="leadsDropdown">
+                            <a class="dropdown-item" href="{{ route('search.places') }}">Buscar Leads</a>
+                            <a class="dropdown-item" href="{{ route('leads.index') }}">Lista de Leads</a>
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <a href="{{ route('campanhas.index') }}">
+                            <i class="fa-solid fa-bullhorn"></i>
+                          <span>Campanhas</span> 
+                        </a>
+                    </li>
+                    {{-- <li>
+                        <a href="{{ route('leads') }}">
+                            <i class="fa-solid fa-users"></i>
+                           Clientes
+                        </a>
+                    </li> --}}
+                    <li>
+                        <a href="{{ route('suporte')}}">
+                            <i class="fa-solid fa-clipboard-question"></i>
+                            <span>FAQ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('resultados')}}">
+                            <i class="fa-solid fa-ranking-star"></i> 
+                            <span>Resultados</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('configuracoes')}}">
+                            <i class="fa-solid fa-gears"></i>
+                            <span>Configurações</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
 
             <ul class="list-unstyled components">
-                <li class="active">
-                    {{-- <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" >
-                        <i class="fas fa-home"></i>
-                        Home
-                    </a> --}}
-                    <a href="{{ route('dashboard') }}">
-                        <i class="fas fa-home"></i>
-                        <span>Dashboard</span>
-                    </a>
-                    {{-- <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Lista</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul> --}}
-                </li>
-                <li class="nav-item dropdown">
-                    <a id="leadsDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa-solid fa-list"></i>
-                        <span>Leads</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="leadsDropdown">
-                        <a class="dropdown-item" href="{{ route('search.places') }}">Buscar Leads</a>
-                        <a class="dropdown-item" href="{{ route('leads.index') }}">Lista de Leads</a>
-                    </div>
-                </li>
-                
-                <li>
-                    <a href="{{ route('campanhas.index') }}">
-                        <i class="fa-solid fa-bullhorn"></i>
-                      <span>Campanhas</span> 
-                    </a>
-                </li>
-                {{-- <li>
-                    <a href="{{ route('leads') }}">
-                        <i class="fa-solid fa-users"></i>
-                       Clientes
-                    </a>
-                </li> --}}
-                <li>
-                    <a href="{{ route('suporte')}}">
-                        <i class="fa-solid fa-clipboard-question"></i>
-                        <span>FAQ</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('resultados')}}">
-                        <i class="fa-solid fa-ranking-star"></i> 
-                        <span>Resultados</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('configuracoes')}}">
-                        <i class="fa-solid fa-gears"></i>
-                        <span>Configurações</span>
-                    </a>
-                </li>
                 <li>
                     <div class="dropdown">
-                        <button class="btn-padrao dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="dropdown-toggle logout-user" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::user()->name }}
-                        </button>
+                        </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="{{ route('perfil.edit') }}">Editar Perfil</a>
                             
@@ -89,15 +93,6 @@
                             </form>
                         </div>
                     </div>
-                </li>
-            </ul>
-
-            <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li>
-                <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
                 </li>
             </ul>
         </nav>

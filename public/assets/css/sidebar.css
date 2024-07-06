@@ -66,6 +66,8 @@ span {
     background: #865dcf;
     color: #fff;
     transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
 }
 
 #sidebar.active {
@@ -202,6 +204,9 @@ a.article:hover {
     transition: all 0.3s;
 }
 
+.logout-user {
+    background: #4d4f4f;
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

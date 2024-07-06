@@ -8,29 +8,34 @@ for (let i = 5; i >= 0; i--) {
   meses.push(date.toLocaleString('default', { month: 'long' }));
 }
 
-const ctx = document.getElementById('clientesAlcancadosChart').getContext('2d');
-const clientesAlcancadosChart = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: meses,
-    datasets: [{
-      label: 'Clientes Alcançados',
-      data: dadosClientes,
-      borderColor: 'rgba(153, 102, 255, 1)',
-      backgroundColor: 'rgba(153, 102, 255, 0.2)',
-      fill: true,
-      tension: 0.1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true,
-        max: 500
+const chartElement = document.getElementById('clientesAlcancadosChart');
+
+if (chartElement) {
+  const ctx = chartElement.getContext('2d');
+  const clientesAlcancadosChart = new Chart(ctx, {
+
+    type: 'line',
+    data: {
+      labels: meses,
+      datasets: [{
+        label: 'Clientes Alcançados',
+        data: dadosClientes,
+        borderColor: 'rgba(153, 102, 255, 1)',
+        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+        fill: true,
+        tension: 0.1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 500
+        }
       }
     }
-  }
-});
+  });
+}
 
 //envio de itens da tabela
 
