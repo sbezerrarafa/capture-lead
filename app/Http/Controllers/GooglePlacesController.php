@@ -23,7 +23,6 @@ class GooglePlacesController extends Controller
 
         do {
             $results = $this->googlePlacesService->searchPlaces($query, $nextPageToken);
-
             if (isset($results['results'])) {
                 foreach ($results['results'] as $place) {
                     $details = $this->googlePlacesService->getPlaceDetails($place['place_id']);
@@ -40,9 +39,11 @@ class GooglePlacesController extends Controller
 
         } while ($nextPageToken);
 
+        $googleMapsApiKey = env('GOOGLE_API_KEY');
         return view('places.search', [
             'placesDetails' => $placesDetails,
             'query' => $query,
+            'googleMapsApiKey' => $googleMapsApiKey,
         ]);
     }
 }
