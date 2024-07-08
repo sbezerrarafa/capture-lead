@@ -46,7 +46,7 @@
     <div class="mapa">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63223.1501042669!2d-34.88622147538925!3d-7.952685184975916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ab3d4aba781a11%3A0xe7fb0e6b58720c12!2sEscola%20Maria%20do%20Carmo!5e0!3m2!1spt-BR!2sbr!4v1717213678189!5m2!1spt-BR!2sbr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-    <table class="table">
+    {{-- <table class="table">
       <thead>
           <tr>
               <th class="checkbox-column"><input style="margin-bottom: 5px;" type="checkbox" id="select-all"></th>
@@ -115,8 +115,158 @@
               <td>Papelaria</td>
           </tr>
       </tbody>
-  </table>
+  </table> --}}
+  <div class="table-responsive custom-table-responsive">
 
+    <table class="table custom-table">
+      <thead>
+        <tr>  
+
+          <th scope="col">
+            <label class="control control--checkbox">
+              <input type="checkbox"  class="js-check-all"/>
+              <div class="control__indicator"></div>
+            </label>
+          </th>
+          
+          <th scope="col">Order</th>
+          <th scope="col">Name</th>
+          <th scope="col">Occupation</th>
+          <th scope="col">Contact</th>
+          <th scope="col">Education</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr scope="row">
+          <th scope="row">
+            <label class="control control--checkbox">
+              <input type="checkbox"/>
+              <div class="control__indicator"></div>
+            </label>
+          </th>
+          <td>
+            1392
+          </td>
+          <td><a href="#">James Yates</a></td>
+          <td>
+            Web Designer
+            <small class="d-block">Far far away, behind the word mountains</small>
+          </td>
+          <td>+63 983 0962 971</td>
+          <td>NY University</td>
+        </tr>
+        <tr class="spacer"><td colspan="100"></td></tr>
+        <tr>
+          <th scope="row">
+            <label class="control control--checkbox">
+              <input type="checkbox"/>
+              <div class="control__indicator"></div>
+            </label>
+          </th>
+          
+          <td>4616</td>
+          <td><a href="#">Matthew Wasil</a></td>
+          <td>
+            Graphic Designer
+            <small class="d-block">Far far away, behind the word mountains</small>
+          </td>
+          <td>+02 020 3994 929</td>
+          <td>London College</td>
+        </tr>
+        <tr class="spacer"><td colspan="100"></td></tr>
+        <tr>
+          <th scope="row">
+            <label class="control control--checkbox">
+              <input type="checkbox"/>
+              <div class="control__indicator"></div>
+            </label>
+          </th>
+          
+          <td>9841</td>
+          <td><a href="#">Sampson Murphy</a></td>
+          <td>
+            Mobile Dev
+            <small class="d-block">Far far away, behind the word mountains</small>
+          </td>
+          <td>+01 352 1125 0192</td>
+          <td>Senior High</td>
+        </tr>
+        <tr class="spacer"><td colspan="100"></td></tr>
+        <tr>
+          <th scope="row">
+            <label class="control control--checkbox">
+              <input type="checkbox"/>
+              <div class="control__indicator"></div>
+            </label>
+          </th>
+          
+          <td>9548</td>
+          <td><a href="#">Gaspar Semenov</a></td>
+          <td>
+            Illustrator
+            <small class="d-block">Far far away, behind the word mountains</small>
+          </td>
+          <td>+92 020 3994 929</td>
+          <td>College</td>
+        </tr>
+        <tr class="spacer"><td colspan="100"></td></tr>
+        <tr>
+          <th scope="row">
+            <label class="control control--checkbox">
+              <input type="checkbox"/>
+              <div class="control__indicator"></div>
+            </label>
+          </th>
+          
+          <td>4616</td>
+          <td><a href="#">Matthew Wasil</a></td>
+          <td>
+            Graphic Designer
+            <small class="d-block">Far far away, behind the word mountains</small>
+          </td>
+          <td>+02 020 3994 929</td>
+          <td>London College</td>
+        </tr>
+        <tr class="spacer"><td colspan="100"></td></tr>
+        <tr>
+          <th scope="row">
+            <label class="control control--checkbox">
+              <input type="checkbox"/>
+              <div class="control__indicator"></div>
+            </label>
+          </th>
+          
+          <td>9841</td>
+          <td><a href="#">Sampson Murphy</a></td>
+          <td>
+            Mobile Dev
+            <small class="d-block">Far far away, behind the word mountains</small>
+          </td>
+          <td>+01 352 1125 0192</td>
+          <td>Senior High</td>
+        </tr>
+        <tr class="spacer"><td colspan="100"></td></tr>
+        <tr>
+          <th scope="row">
+            <label class="control control--checkbox">
+              <input type="checkbox"/>
+              <div class="control__indicator"></div>
+            </label>
+          </th>
+          
+          <td>9548</td>
+          <td><a href="#">Gaspar Semenov</a></td>
+          <td>
+            Illustrator
+            <small class="d-block">Far far away, behind the word mountains</small>
+          </td>
+          <td>+92 020 3994 929</td>
+          <td>College</td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
   
 
     
